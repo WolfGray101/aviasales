@@ -1,0 +1,12 @@
+.aside {
+  width: 232px;
+  align-self: flex-start;
+  padding: 16px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.aside label {
+  margin-inline-start: 0 !important ;
+}

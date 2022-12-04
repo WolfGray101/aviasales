@@ -1,0 +1,20 @@
+.card-item {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap:20px
+}
+.card-item__header {
+  display: flex;
+  justify-content: space-between;
+}
+.card-item__info {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap:10px
+}
+.card-item__info-to, .card-item__info-from {
+  display: flex;
+  justify-content: space-between;
+}

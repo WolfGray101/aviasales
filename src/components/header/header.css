@@ -1,0 +1,24 @@
+.header {
+  text-align: center;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+.header-filter-button {
+  width: 33%;
+  border: none;
+  /* border: 0.1px solid gray; */
+  background: none;
+}
+.header-filter-button:first-child {
+  border-bottom-left-radius: 8px;
+  border-top-left-radius: 8px ;
+}
+.header-filter-button:last-child {
+  border-bottom-right-radius: 8px;
+  border-top-right-radius: 8px;
+}
+.header .active {
+  background: #2196F3;
+  color:antiquewhite
+}
