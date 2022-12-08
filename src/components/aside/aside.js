@@ -1,24 +1,45 @@
 import React from 'react'
-import { Checkbox} from 'antd';
 
+import { Checkbox} from 'antd';
+import { all, none, oneS, twoS, threeS} from '../../service/actions/actions-aside'
+import { connect } from 'react-redux';
 import 'antd/dist/reset.css'
 import './aside.css'
 
-const Aside = () => {
-  const onChange = (e, id ) => {
-    console.log(`checked = ${e.target.checked} ${e.target.id}`);
-  };
+const Aside = ({ state, allCheckedDispatch, noneStopDispatch,
+  oneStopDispatch, twoStopDispatch, threeStopDispatch }) => {
+
+  const checkedAll = state.noneStop && state.oneStop && state.twoStop && state.threeStop
+
   return (
    <aside className="aside">
+
         <h3>Количество пересадок</h3>
-        <Checkbox id = {1} onChange={onChange}>Все</Checkbox>
-        <Checkbox id = {2} onChange={onChange}>Без пересадок</Checkbox>
-        <Checkbox id = {3} onChange={onChange}>1 пересадка</Checkbox>
-        <Checkbox id = {4} onChange={onChange}>2 пересадки</Checkbox>
-        <Checkbox id = {5} onChange={onChange}>3 пересадки</Checkbox>
-    
+        <Checkbox id = 'allCheckBox' checked={checkedAll} onChange={allCheckedDispatch}> Все </Checkbox>
+        <Checkbox id = 'nonStop'     checked={state.noneStop}  onChange={noneStopDispatch}> Без пересадок</Checkbox>
+        <Checkbox id = 'oneStop'     checked={state.oneStop}  onChange={oneStopDispatch}> 1 пересадка</Checkbox>
+        <Checkbox id = 'twoStop'     checked={state.twoStop} onChange={twoStopDispatch}> 2 пересадки</Checkbox>
+        <Checkbox id = 'threeStop'   checked={state.threeStop} onChange={threeStopDispatch}> 3 пересадки</Checkbox>
+
    </aside>
   )
+
+}
+const mapStateToProps = ( state ) => {
+
+  const {reducerAside} = state
+  return {
+    state: reducerAside
+  }
 }
 
-export default Aside
+const mapDispatchToProps = ( dispatch ) => {
+  return {
+     allCheckedDispatch: () => dispatch(all()),
+     noneStopDispatch: () => dispatch(none()),
+     oneStopDispatch: () => dispatch(oneS()),
+     twoStopDispatch: () => dispatch(twoS()),
+     threeStopDispatch: () => dispatch(threeS())
+  }
+}
+export default  connect(mapStateToProps, mapDispatchToProps)(Aside)

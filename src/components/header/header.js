@@ -1,47 +1,52 @@
-import React, {useState} from 'react'
-import { Radio } from 'antd';
+import React from 'react'
+import { connect } from 'react-redux'
+import {changeFilterTickets} from '../../service/actions/actions-header'
 
 import './header.css'
 
-// const plainOptions = ['Apple', 'Pear', 'Orange'];
+const Header = ({ state, changeFilterTickets }) => {  
 
-// const options = [
-//   {
-//     label: 'Самый дешевый',
-//     value: 'Apple',
-//   },
-//   {
-//     label: 'Самый быстрый',
-//     value: 'Pear',
-//   },
-//   {
-//     label: 'Оптимальный',
-//     value: 'Orange',
-//   },
-// ];
+  const headerBtn = [
+    {
+      name: 'Самый дешевый',
+      value: 'lowcost',
+    },
+    {
+      name: 'Самый быстрый',
+      value: 'faster',
+    },
+    {
+      name: 'Оптимальный',
+      value: 'optimal',
+    },
+  ]
 
-const Header = () => {
-  
-//   const [value3, setValue3] = useState('Apple');
-  
-  
- const onChange = ({ target }) => {
-  console.log(target)
-    // console.log(`radio ${id} checked`, value);
-    // setValue3(value);
-  };
+const btnList = headerBtn.map((e) => {
 
-  return  (
-    <header className="header" >
+  let classValue = 'header-filter-button'
+  if (state.ticketType === e.value) {
+    classValue += ' active'
+  }
 
-    
-      <button className='header-filter-button active' onClick = {onChange} id= {1} value="a">Самый дешевый</button>
-      <button className='header-filter-button' onClick = {onChange} id= {1} value="b">Самый быстрый</button>
-      <button className='header-filter-button' onClick = {onChange} id= {1} value="d">Оптимальный</button>
-    
-
-    </header >
+  return (
+    <button className={classValue} type="button" key={e.value} onClick={() => changeFilterTickets(e.value)}>
+      {e.name}
+    </button>
   )
-}
+})
 
-export default Header
+return <div className="header">{btnList}</div>
+
+}
+const mapStateToProps = ( state ) => {
+  const {reducerHeader} = state
+  return {
+    state: reducerHeader
+  }
+}
+const mapDispatchToProps = ( dispatch ) => {
+  return {
+     changeFilterTickets: (payload) => dispatch(changeFilterTickets(payload))
+  }
+}
+export default  connect(mapStateToProps, mapDispatchToProps)(Header)
