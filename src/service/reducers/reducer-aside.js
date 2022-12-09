@@ -29,11 +29,18 @@ const reducerAside = (state = initialState, action) => {
           };
       case 'ALL' :
           return {
-            allChecked: !state.allChecked,
-            noneStop: !state.noneStop,
-            oneStop: !state.oneStop,
-            twoStop: !state.twoStop,
-            threeStop: !state.threeStop,
+            allChecked: true,
+            noneStop: true,
+            oneStop: true,
+            twoStop: true,
+            threeStop: true,
+          };
+          case 'ALL_OFF' :
+          return {
+            noneStop: false,
+            oneStop: false,
+            twoStop: false,
+            threeStop: false,
           };
       default: 
         return state;

@@ -2,6 +2,9 @@
 export const all = () => {
     return { type: 'ALL' } 
   }
+  export const allOff = () => {
+    return { type: 'ALL_OFF' } 
+  }
   export const none = () => {
     return { type: 'NONE' } 
   }
@@ -14,6 +17,7 @@ export const all = () => {
   export const threeS = () => {
     return { type: 'THREE' } 
   }
+
   //создаем actionCreater
 // export  const rnd = (payload) =>  ( { type: 'RND', payload })
   

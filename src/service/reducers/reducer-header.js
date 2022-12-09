@@ -4,7 +4,6 @@ const initialState = {
   const reducerHeader = (state = initialState, action) => {
       switch ( action.type ) {
         case 'CHANGE' :
-          console.log(action.payload);
           return {
             ...state,
             ticketType: action.payload
