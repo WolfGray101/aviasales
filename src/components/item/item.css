@@ -1,5 +1,5 @@
 .card-item {
-  padding: 20px;
+  padding: 26px 20px;
   display: flex;
   flex-direction: column;
   gap:20px
@@ -12,9 +12,33 @@
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  gap:10px
 }
 .card-item__info-to, .card-item__info-from {
   display: flex;
   justify-content: space-between;
+}
+.card-item__info-from {
+  margin-top: 10px;
+}
+
+.card-item__info-details {
+  width: 30%;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: #4A4A4A;
+}
+
+.card-item__info-details  span {
+  color: #A0B0B9;
+  line-height: 18px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+.price {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 24px;
+  color: #2196F3;
 }
