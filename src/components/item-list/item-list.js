@@ -84,7 +84,7 @@ function ItemList({ state, switcher, reducerAside, dispatchID, dispatchList }) {
     if (twoStop) arrFilter.push(2)
     if (threeStop) arrFilter.push(3)
 
-    if (arrFilter.length === 0) return 'По заданному параметру нет билетов'
+    if (arrFilter.length === 0) return []
 
     return prevSortTicket.filter((el) => {
       if (arrFilter.includes(el.segments[0].stops.length)) return el
@@ -97,8 +97,8 @@ function ItemList({ state, switcher, reducerAside, dispatchID, dispatchList }) {
   const filterTickets = filterTicket(prevSortTicket)
 
   const renderTicketItem = (filterTicketsProps) => {
-    if (typeof filterTicketsProps === 'string') return filterTicketsProps
-    return filterTickets
+    if (filterTicketsProps.length === 0) return 'По заданному параметру нет билетов'
+    return filterTicketsProps
       .slice(0, ticketsAmount)
       .map((el) => (
         <Item key={el.price * Math.random() * 14} price={el.price} carrier={el.carrier} segments={el.segments} />
@@ -112,7 +112,7 @@ function ItemList({ state, switcher, reducerAside, dispatchID, dispatchList }) {
   const spinner = loading ? <Spin /> : progressLine
 
   const content = !(loading || error) ? renderTicket : null
-  const footer = !(loading || error) ? <Footer /> : null
+  const footer = !(loading || error || filterTickets.length === 0) ? <Footer /> : null
 
   return (
     <section className={classes['item-list']}>
