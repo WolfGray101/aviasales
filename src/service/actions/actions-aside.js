@@ -1,23 +1,9 @@
+export const all = () => ({ type: 'ALL' })
+export const allOff = () => ({ type: 'ALL_OFF' })
+export const none = () => ({ type: 'NONE' })
+export const oneS = () => ({ type: 'ONE' })
+export const twoS = () => ({ type: 'TWO' })
+export const threeS = () => ({ type: 'THREE' })
 
-export const all = () => {
-    return { type: 'ALL' } 
-  }
-  export const allOff = () => {
-    return { type: 'ALL_OFF' } 
-  }
-  export const none = () => {
-    return { type: 'NONE' } 
-  }
-  export const oneS = () => {
-    return { type: 'ONE' } 
-  }
-  export const twoS = () => {
-    return { type: 'TWO' } 
-  }
-  export const threeS = () => {
-    return { type: 'THREE' } 
-  }
-
-  //создаем actionCreater
+// создаем actionCreater
 // export  const rnd = (payload) =>  ( { type: 'RND', payload })
-  

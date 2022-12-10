@@ -7,7 +7,7 @@ const defaultState = {
   ticketsAmount: 5,
   progressBar: 0,
 }
-   
+
 function ticketReducer(state = defaultState, action = {}) {
   switch (action.type) {
     case 'SET_TICKETS':
@@ -26,8 +26,7 @@ function ticketReducer(state = defaultState, action = {}) {
         searchId: action.payload,
       }
 
-    case 'MORE_TICKETS':
-      console.log('more tickets');
+    case 'GET_MORE_TICKETS':
       return {
         ...state,
         ticketsAmount: state.ticketsAmount + action.payload,
