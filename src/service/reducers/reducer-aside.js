@@ -1,9 +1,9 @@
 const initialState = {    
-  allChecked: false,
-  noneStop: false,
-  oneStop: false,
-  twoStop: false,
-  threeStop: false
+  allChecked: true,
+  noneStop: true,
+  oneStop: true,
+  twoStop: true,
+  threeStop: true
 }
 const reducerAside = (state = initialState, action) => {
     switch ( action.type ) {
