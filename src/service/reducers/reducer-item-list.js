@@ -4,8 +4,8 @@ const defaultState = {
   loading: true,
   error: false,
   loadingAll: false,
-  countDispalayTicket: 5,
-  progressLoading: 0,
+  ticketsAmount: 5,
+  progressBar: 0,
 }
    
 function ticketReducer(state = defaultState, action = {}) {
@@ -15,7 +15,7 @@ function ticketReducer(state = defaultState, action = {}) {
         ...state,
         loading: false,
         error: false,
-        progressLoading: state.progressLoading + 8,
+        progressBar: state.progressBar + 5,
         loadingAll: action.payload.stop,
         ticketsList: [...state.ticketsList, ...action.payload.tickets],
       }
@@ -26,10 +26,11 @@ function ticketReducer(state = defaultState, action = {}) {
         searchId: action.payload,
       }
 
-    case 'SET_COUNT_TICKETS':
+    case 'MORE_TICKETS':
+      console.log('more tickets');
       return {
         ...state,
-        countDispalayTicket: action.payload,
+        ticketsAmount: state.ticketsAmount + action.payload,
       }
 
     case 'ERROR': {
